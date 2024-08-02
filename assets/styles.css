@@ -1,0 +1,318 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    width: 100%;
+    background-color: #E9FFC4;
+}
+
+canvas {
+    display: block;
+}
+
+.top-body{
+    width: 100%;
+    height: 100vh;
+    position: relative;
+}
+
+.midori-bg{
+    position: absolute;
+    z-index: 0;
+    text-align: center;
+}
+
+.midori-bg img{
+    width: 100%;
+    animation-duration: 60s;
+    animation-name: drip;
+    animation-direction: alternate;
+    animation-fill-mode: forwards;
+    margin: auto;
+}
+
+@keyframes drip {
+    from {
+        width: 100vw;
+        margin-top: -140px;
+        height: 900px;
+    }
+    to {
+        width: 100%;
+        margin-top: 0px;
+        height: 1480px;
+    }
+  }
+
+.title{
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 206px;
+    height: 65px;
+    display: block;
+}
+
+.comp{
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    right: 0;
+    bottom: 40px;
+    margin: auto;
+    text-align: center;
+    display: block;
+}
+
+.entry-button{
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    right: 0;
+    bottom: 28%;
+    margin: auto;
+    text-align: center;
+    display: block;
+    display: flex;
+    width: 180px;
+}
+
+.entry-button p{
+    font-size: 16px;
+    text-align: left;
+}
+
+.entry-button p.bold{
+    font-weight: 900;
+}
+
+.button-cursor{
+    display: flex;
+    align-items: center;
+    margin-left: 16px;
+}
+
+.js_novel_daysButtonBar {
+    display: block;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%
+}
+
+.js_novel_daysButtonBarBody {
+    background: hsla(0, 0%, 0%, 0.1);
+    bottom: -10px;
+    display: block;
+    height: 1.5px;
+    left: -184px;
+    position: absolute;
+    -webkit-transform: translate(-100%);
+    transform: translate(-100%);
+    width: 100%
+}
+
+.js_novel_daysButtonBarBody {
+    -webkit-transform: translate(0);
+    transform: translate(0);
+    -webkit-transition: -webkit-transform 1.2s cubic-bezier(.77,0,.175,1) 1.2s;
+    transition: -webkit-transform 1.2s cubic-bezier(.77,0,.175,1) 1.2s;
+    transition: transform 1.2s cubic-bezier(.77,0,.175,1) 1.2s;
+    transition: transform 1.2s cubic-bezier(.77,0,.175,1) 1.2s,-webkit-transform 1.2s cubic-bezier(.77,0,.175,1) 1.2s
+}
+
+.js_novel_daysButtonBarBody {
+    -webkit-transform: translate(100%);
+    transform: translate(100%);
+    -webkit-transition: -webkit-transform 1.2s cubic-bezier(.77,0,.175,1);
+    transition: -webkit-transform 1.2s cubic-bezier(.77,0,.175,1);
+    transition: transform 1.2s cubic-bezier(.77,0,.175,1);
+    transition: transform 1.2s cubic-bezier(.77,0,.175,1),-webkit-transform 1.2s cubic-bezier(.77,0,.175,1)
+}
+
+.js_novel_daysButtonBarBodyInner {
+    background: #000;
+    height: 100%;
+    left: 0px;
+    position: absolute;
+    top: 0px;
+    width: 100%
+}
+
+.js_novel_daysButtonBarBodyInner {
+    -webkit-animation: js_novel_daysButtonBarBodyInner 2.8s cubic-bezier(.77,0,.175,1) infinite;
+    animation: js_novel_daysButtonBarBodyInner 2.8s cubic-bezier(.77,0,.175,1) infinite
+}
+
+@-webkit-keyframes js_novel_daysButtonBarBodyInner {
+    0%,10% {
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1);
+        -webkit-transform-origin: right top;
+        transform-origin: right top
+    }
+
+    50% {
+        -webkit-transform: scaleX(0);
+        transform: scaleX(0);
+        -webkit-transform-origin: right top;
+        transform-origin: right top
+    }
+
+    51% {
+        -webkit-transform: scaleX(0);
+        transform: scaleX(0);
+        -webkit-transform-origin: left top;
+        transform-origin: left top
+    }
+
+    90%,to {
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1);
+        -webkit-transform-origin: left top;
+        transform-origin: left top
+    }
+}
+
+@keyframes js_novel_daysButtonBarBodyInner {
+    0%,10% {
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1);
+        -webkit-transform-origin: right top;
+        transform-origin: right top
+    }
+
+    50% {
+        -webkit-transform: scaleX(0);
+        transform: scaleX(0);
+        -webkit-transform-origin: right top;
+        transform-origin: right top
+    }
+
+    51% {
+        -webkit-transform: scaleX(0);
+        transform: scaleX(0);
+        -webkit-transform-origin: left top;
+        transform-origin: left top
+    }
+
+    90%,to {
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1);
+        -webkit-transform-origin: left top;
+        transform-origin: left top
+    }
+}
+
+.js_novel_daysButtonBarBody {
+    height:1.5px
+}
+
+body.book-layout{
+    overflow: visible;
+    font-size: 23px;
+    background-color: #000;
+    color: #fff;
+}
+
+.book-body{
+    width: 100%;
+}
+
+.book-body .text{
+    max-width: 500px;
+    margin: 80px auto 120px;
+}
+
+.book-body .text h2{
+    margin: 0 auto 24px;
+    text-align: center;
+}
+
+.book-body h2 span{
+    font-size: 12px;
+    letter-spacing: 0.03em;
+    display: block;
+    font-weight: 800;
+    margin-bottom: 4px;;
+}
+
+.book-body h2 em{
+    font-size: 38px;
+    letter-spacing: 0.03em;
+}
+
+.book-body .text p{
+    margin: 0 auto 24px;
+    line-height: 1.7em;
+    font-family: "ten-mincho-text", serif;
+    font-weight: 700;
+    font-style: normal;
+    letter-spacing: 0.02em;
+}
+
+/* 
+#bgimages,
+#bgimages .content,
+#bgimages .slide-wrapper,
+#bgimages .slide-item,
+#bgimages .slide-item__image{
+    z-index: -1;
+}
+
+canvas{
+    position: fixed!important;
+    z-index: -1;
+} */
+
+#glCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+}
+
+.title-fadein{
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.title-wrapper{
+    display: flex;
+    flex-direction: column;
+}
+
+.title-fadein .logo{
+    margin-bottom: 40px;
+}
+
+
+.title-fadein img{
+    max-width: 500px;
+}
+
+.title-fadein h1{
+    font-size: 24px;
+    text-align: center;
+    font-family: "ten-mincho-text", serif;
+    margin-bottom: 24px;
+    color: #64FF01;
+}
+
+.title-fadein h2{
+    font-size: 15px;
+    text-align: center;
+    font-family: "ten-mincho-text", serif;
+    color: #64FF01;
+}
