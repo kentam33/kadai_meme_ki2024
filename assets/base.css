@@ -229,15 +229,6 @@ a:focus-visible {
 	place-items: center;
 }
 
-.blur-text {
-	width: 100%;
-	max-width: 100%;
-	min-width: 300px;
-	line-height: 1.2;
-	font-family: "instrument-sans-variable", sans-serif;
-	font-size: clamp(1.5rem,5vw,3rem);
-}
-
 .blur-text--1 {
 	font-variation-settings: "wght" 420, "wdth" 100;
 	letter-spacing: -0.05em;
