@@ -215,7 +215,6 @@ canvas {
 
 body.book-layout{
     overflow: visible;
-    font-size: 23px;
     background-color: #000;
     color: #fff;
 }
@@ -254,6 +253,7 @@ body.book-layout{
     font-weight: 700;
     font-style: normal;
     letter-spacing: 0.02em;
+    font-size: 23px;
 }
 
 /* 
@@ -307,12 +307,242 @@ canvas{
     text-align: center;
     font-family: "ten-mincho-text", serif;
     margin-bottom: 24px;
-    color: #64FF01;
+    /* color: #64FF01; */
+}
+
+.discript h1 span.se{
+    margin-left: 3px;
+}
+.discript h1 span.ki{
+    margin-left: 1px;
 }
 
 .title-fadein h2{
     font-size: 15px;
     text-align: center;
     font-family: "ten-mincho-text", serif;
-    color: #64FF01;
+    /* color: #64FF01; */
+}
+
+
+
+.content {
+    margin-bottom: 500px!important;
+}
+
+
+.fadein {
+	opacity: 0;
+	animation-name: fadein;
+	animation-duration: 3s;
+	animation-timing-function: ease-out;
+	animation-fill-mode: forwards;
+	animation-name: fadein;
+}
+
+
+.fadein.logo {
+    animation-delay: 2s;
+}
+
+.fadein.discript {
+    animation-delay: 3s;
+}
+
+.fadein.scroller {
+    animation-delay: 3.5s;
+}
+
+
+@keyframes fadein {
+    0% {
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+
+.next {
+  position: relative;
+}
+
+.spinner {
+  animation: rotator 3s linear infinite;
+}
+.spinner-arrow {
+  animation: vertical-translate 3s ease-out infinite;
+  position: absolute;
+  margin-top: -12px;
+  left: 19px;
+}
+
+@keyframes rotator {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(250deg);
+  }
+}
+
+.path {
+  stroke-dasharray: 245;
+  stroke-dashoffset: 0;
+  transform-origin: center;
+  stroke: #ffffff;
+  animation: dash 3s linear infinite;
+}
+
+@keyframes dash {
+  0% {
+    stroke-dashoffset: 245;
+  }
+  70% {
+    stroke-dashoffset: 81.25;
+    transform: rotate(205deg);
+  }
+  100% {
+    stroke-dashoffset: 245;
+    transform: rotate(540deg);
+  }
+}
+
+@keyframes vertical-translate {
+  0% {
+    opacity: 0;
+    top: -20%;
+  }
+  25% {
+    opacity: 1;
+    top: 50%;
+  }
+  75% {
+    opacity: 1;
+    top: 50%;
+  }
+  100% {
+    opacity: 0;
+    top: 120%;
+  }
+}
+
+.scroller{
+    position: relative;
+    margin: 56px auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.scroller p{
+    font-size: 13px;
+    font-family: "ten-mincho-text", serif;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.8);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.modal-content {
+    margin: 0 auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 500px;
+    transform: translateY(-20px);
+    opacity: 0;
+    transition: all 0.3s ease;
+    text-align: center;
+    position: relative;
+}
+
+.modal.show {
+    opacity: 1;
+}
+
+.modal.show .modal-content {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.modal-content img{
+    max-width: 320px;
+}
+
+.button-buy{
+    display: block;
+    background-color: #BEFD4F;
+    opacity: 1;
+    color: #000;
+    padding: 16px;
+    border-radius: 32px;
+    font-family: "ten-mincho-text", serif;
+    max-width: 330px;
+    margin: 40px auto;
+}
+
+.button-buy:hover{
+    background-color: #17e84e;
+    color: #000;
+}
+
+.award{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+.award img{
+    width: 160px;
+    margin: 0 8px 16px;
+}
+
+.batsu {
+  display: block;
+  position: absolute;
+  top: 32px;
+  right: 0;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+ 
+.batsu::before, .batsu::after { /* 共通設定 */
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 3px; /* 棒の幅（太さ） */
+  height: 40px; /* 棒の高さ */
+  background: #f7f7f7;
+}
+ 
+.batsu::before {
+  transform: translate(-50%,-50%) rotate(45deg);
+}
+ 
+.batsu::after {
+  transform: translate(-50%,-50%) rotate(-45deg);
 }

@@ -116,7 +116,7 @@ function initBuffers() {
     const positions = [
         -1.0,  1.0,
          1.4,  1.0,
-        -2.5, -1.0,
+        -1.5, -1.0,
          1.0, -1.0,
     ];
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);
@@ -276,3 +276,55 @@ window.onload = () => {
     initWebGL();
     setPageHeight();
 };
+
+function handleScroll() {
+    scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+    const totalScrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollProgress = scrollPosition / totalScrollHeight;
+    
+    targetImageIndex = Math.floor(scrollProgress * images.length);
+    
+    if (targetImageIndex !== currentImageIndex && !isTransitioning) {
+        startTransition();
+    }
+
+    // ページ下部に到達したかチェック
+    if (scrollProgress >= 0.99 && !modalShown) {
+        showModal();
+    }
+}
+
+function showModal() {
+    const modal = document.getElementById('modal');
+    modal.style.display = "block";
+    
+    // フェードインアニメーションのためにタイムアウトを使用
+    setTimeout(() => {
+        modal.classList.add('show');
+    }, 10);
+    
+    modalShown = true;
+
+    // モーダルを閉じる処理
+    const span = document.getElementsByClassName("close")[0];
+    span.onclick = function() {
+        closeModal();
+    }
+
+    // モーダル外をクリックしても閉じるようにする
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            closeModal();
+        }
+    }
+}
+
+function closeModal() {
+    const modal = document.getElementById('modal');
+    modal.classList.remove('show');
+    
+    // アニメーション完了後にdisplayをnoneに設定
+    setTimeout(() => {
+        modal.style.display = "none";
+    }, 300); // トランジションの時間と同じ300ms
+}

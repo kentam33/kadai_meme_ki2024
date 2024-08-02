@@ -223,7 +223,6 @@ a:focus-visible {
 	padding: var(--page-padding);
 	display: flex;
 	flex-direction: column;
-	gap: 20vh;
 	width: 100vw;
 	position: relative;
 	min-height: 100vh;
@@ -231,8 +230,8 @@ a:focus-visible {
 }
 
 .blur-text {
-	width: 70vw;
-	max-width: 1000px;
+	width: 100%;
+	max-width: 100%;
 	min-width: 300px;
 	line-height: 1.2;
 	font-family: "instrument-sans-variable", sans-serif;
