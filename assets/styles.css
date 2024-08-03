@@ -24,8 +24,23 @@ canvas {
 }
 
 .award_cover{
-    margin: 24px;
+    margin: 24px auto;
+    width: 100%;
+    max-width: 500px;
 }
+
+.award_cover img{
+    width: 100%;
+}
+
+@media (max-width: 540px) {
+    .award_cover,
+    .recomend{
+        margin: 0px auto 24px;
+        width: 80%;
+    }    
+}
+
 
 .recomend{
     color: #ffffff;
@@ -49,7 +64,7 @@ canvas {
 	animation-timing-function: ease-out;
 	animation-fill-mode: forwards;
 	animation-name: fadeout;
-    animation-delay: 4s;
+    animation-delay: 5s;
 }
 
 @keyframes fadeout {
@@ -76,6 +91,8 @@ canvas {
     position: absolute;
     z-index: 0;
     text-align: center;
+    width: 100%;
+    overflow: hidden;
 }
 
 .midori-bg img{
@@ -468,7 +485,7 @@ canvas{
 
 
 .title-fadein h1{
-    font-size: 26px;
+    font-size: 28px;
     text-align: center;
     font-family: "ten-mincho-text", serif;
     margin-bottom: 24px;
@@ -483,7 +500,7 @@ canvas{
 }
 
 .title-fadein h2{
-    font-size: 17px;
+    font-size: 20px;
     text-align: center;
     font-family: "ten-mincho-text", serif;
     /* color: #64FF01; */
