@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>画像を全角文字アートに変換</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        #ascii-output {
+            font-family: "MS Gothic", "Yu Gothic", monospace;
+            white-space: pre;
+            line-height: 1;
+            font-size: 8px;
+            letter-spacing: 0;
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        #controls {
+            margin: 20px 0;
+        }
+        label {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>画像を全角文字アートに変換</h1>
+    <div id="controls">
+        <label>
+            文字セット:
+            <select id="char-set">
+                <option value="all">すべての文字</option>
+                <option value="alphabet">アルファベットのみ</option>
+                <option value="numbers">数字のみ</option>
+                <option value="symbols">記号のみ</option>
+            </select>
+        </label>
+    </div>
+    <input type="file" id="image-input" accept="image/*">
+    <div id="ascii-output"></div>
+
+    <script>
+        const charSets = {
+            alphabet: 'ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺａｂｃｄｅｆｇｈｉｊｋｌｍｎｏｐｑｒｓｔｕｖｗｘｙｚ',
+            numbers: '０１２３４５６７８９',
+            symbols: '！＠＃＄％＾＆＊（）＿＋－＝｛｝［］｜＼：；＂＇＜＞，．？／'
+        };
+        
+        // すべての文字セットを組み合わせる
+        charSets.all = charSets.alphabet + charSets.numbers + charSets.symbols;
+
+        function getRandomChar(type) {
+            const charSet = charSets[type] || charSets.all;
+            return charSet[Math.floor(Math.random() * charSet.length)];
+        }
+
+        function imageToAscii(image, width = 100) {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            const scaleFactor = width / image.width;
+            canvas.width = width;
+            canvas.height = Math.floor(image.height * scaleFactor);
+
+            ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            const pixels = imageData.data;
+
+            const charType = document.getElementById('char-set').value;
+            let ascii = '';
+            for (let y = 0; y < canvas.height; y++) {
+                for (let x = 0; x < canvas.width; x++) {
+                    const i = (y * canvas.width + x) * 4;
+                    const brightness = (pixels[i] + pixels[i + 1] + pixels[i + 2]) / 3;
+                    ascii += brightness < 128 ? getRandomChar(charType) : '　';
+                }
+                ascii += '\n';
+            }
+
+            return ascii;
+        }
+
+        function updateImage() {
+            const fileInput = document.getElementById('image-input');
+            if (fileInput.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    const img = new Image();
+                    img.onload = function() {
+                        const ascii = imageToAscii(img);
+                        document.getElementById('ascii-output').textContent = ascii;
+                    }
+                    img.src = event.target.result;
+                }
+                reader.readAsDataURL(fileInput.files[0]);
+            }
+        }
+
+        document.getElementById('image-input').addEventListener('change', updateImage);
+        document.getElementById('char-set').addEventListener('change', updateImage);
+    </script>
+</body>
+</html>
